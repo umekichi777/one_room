@@ -1,5 +1,5 @@
 class Public::UsersController < ApplicationController
-  before_action :authenticate_customer!
+  before_action :authenticate_user!
 
   def index
   end
@@ -11,7 +11,7 @@ class Public::UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
   end
-  
+
   def update
     @user = User.find(params[:id])
     @user.update(user_params)

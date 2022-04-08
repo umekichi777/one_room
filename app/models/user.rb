@@ -14,6 +14,7 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :age, presence: true
 
+# 年代のenumの定義
   enum age: { teens:0, twenties:1, thirties:2, fourties:3, fifties:4 }
 
 
