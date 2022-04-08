@@ -17,13 +17,13 @@
       <ul>
       <% if user_signed_in? %>
         <li>
-          <%= link_to "マイページ" %>
+          <%= link_to "マイページ", user_path(current_user) %>
         </li>
         <li>
           <%= link_to "投稿一覧" %>
         </li>
         <li>
-          <%= link_to "ユーザー一覧" %>
+          <%= link_to "ユーザー一覧", users_path %>
         </li>
         <li>
           <%= link_to "コミュニティ一覧" %>
