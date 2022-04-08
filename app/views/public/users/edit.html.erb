@@ -3,20 +3,40 @@
 <%= form_with model: @user, local: true do |f| %>
   <%= f.label :name, "名前" %>
   <%= f.text_field :name %>
-  
+
   <%= f.label :kana_name, "フリガナ" %>
   <%= f.text_field :kana_name %>
-  
+
   <%= f.label :user_name, "アカウント名" %>
   <%= f.text_field :user_name %>
-  
+
   <%= f.label :email, "メールアドレス" %>
   <%= f.email_field :email %>
-  
+
   <%= f.label :introduction, "紹介" %>
   <%= f.text_area :introduction %>
-  
+
+  <!--10代のラジオボタン-->
+  <%= f.label :age, User.ages_i18n[:teens] %>
+  <%= f.radio_button :age, User.ages.key(0) %>
+
+  <!--20代のラジオボタン-->
+  <%= f.label :age, User.ages_i18n[:twenties] %>
+  <%= f.radio_button :age, User.ages.key(1) %>
+
+  <!--30代のラジオボタン-->
+  <%= f.label :age, User.ages_i18n[:thirties] %>
+  <%= f.radio_button :age, User.ages.key(2) %>
+
+  <!--40代のラジオボタン-->
+  <%= f.label :age, User.ages_i18n[:fourties] %>
+  <%= f.radio_button :age, User.ages.key(3) %>
+
+  <!--50代のラジオボタン-->
+  <%= f.label :age, User.ages_i18n[:fifties] %>
+  <%= f.radio_button :age, User.ages.key(4) %>
+
   <%= f.label :profile_image, "プロフィール画像" %>
   <%= f.file_field :profile_image, accept: "image/*" %>
-  
+
   <%= f.submit "変更を保存する" %>

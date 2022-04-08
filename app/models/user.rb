@@ -14,6 +14,8 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :age, presence: true
 
+  enum age: { teens:0, twenties:1, thirties:2, fourties:3, fifties:4 }
+
 
   def get_profile_image
     (profile_image.attached?) ? profile_image : 'no_image.jpg'
