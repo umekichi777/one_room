@@ -1,0 +1,9 @@
+ja:
+  enums:
+    user:
+      age:
+        teens: "10代"
+        twenties: "20代"
+        thirties: "30代"
+        fourties: "40代"
+        fifties: "50代"

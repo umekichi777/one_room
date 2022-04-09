@@ -1,2 +1,43 @@
-<h1>Public::Users#show</h1>
-<p>Find me in app/views/public/users/show.html.erb</p>
+<h1>My page</h1>
+
+<div>
+  <% if @user.id = current_user.id %>
+    <%= image_tag @user.get_profile_image(100, 100) %>
+    <%= link_to "編集", edit_user_path(@user) %>
+    <%= link_to "退会" %>
+  <% else %>
+    <%= image_tag @user.get_profile_image(100, 100) %>
+    <%= link_to "フォローする" %>
+    <%= link_to "メッセージを送る" %>
+  <% end %>
+</div>
+
+<div>
+  <% if @user.id = current_user.id %>
+    <p>
+      Account Name:</br>
+      <%= @user.user_name %>
+    </p>
+    <p>
+      Age:</br>
+      <%= @user.age_i18n %>
+    </p>
+    <P>
+      Introduction:</br>
+      <%= @user.introduction %>
+    </P>
+  <% else %>
+  <p>
+      Account Name:</br>
+      <%= @user.user_name %>
+    </p>
+    <p>
+      Age:</br>
+      <%= @user.age_i18n %>
+    </p>
+    <P>
+      Introduction:</br>
+      <%= @user.introduction %>
+    </P>
+  <% end %>
+</div>
