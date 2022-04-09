@@ -3,7 +3,7 @@
 <div>
   <% if @user.id = current_user.id %>
     <%= image_tag @user.get_profile_image(100, 100) %>
-    <%= link_to "編集", user_path(@user) %>
+    <%= link_to "編集", edit_user_path(@user) %>
     <%= link_to "退会" %>
   <% else %>
     <%= image_tag @user.get_profile_image(100, 100) %>
@@ -20,7 +20,7 @@
     </p>
     <p>
       Age:</br>
-      <%= @user.age %>
+      <%= @user.age_i18n %>
     </p>
     <P>
       Introduction:</br>
@@ -33,7 +33,7 @@
     </p>
     <p>
       Age:</br>
-      <%= @user.age %>
+      <%= @user.age_i18n %>
     </p>
     <P>
       Introduction:</br>
