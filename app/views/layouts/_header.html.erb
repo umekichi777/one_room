@@ -2,6 +2,7 @@
 
   <ul>
     <% if user_signed_in? %>
+      <p>Welcome! <%= current_user.user_name %>さん!</p>
       <li>
         <%= link_to "マイページ", user_path(current_user.id) %>
       </li>
@@ -28,7 +29,7 @@
         <%= link_to "コミュニティ一覧" %>
       </li>
       <li>
-        <%= link_to "ログアウト" 
+        <%= link_to "ログアウト" %>
       </li>
     <% else %>
       <li>
