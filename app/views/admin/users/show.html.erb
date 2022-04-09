@@ -1,2 +1,20 @@
-<h1>Admin::Users#show</h1>
-<p>Find me in app/views/admin/users/show.html.erb</p>
+<h1>ユーザー詳細</h1>
+
+<div>
+  <%= image_tag @user.get_profile_image(100, 100) %>
+</div>
+
+<div>
+  <p>
+    Account Name:</br>
+    <%= @user.user_name %>
+  </p>
+  <p>
+    Age:</br>
+    <%= @user.age_i18n %>
+  </p>
+  <p>
+    Introduction:</br>
+    <%= @user.introduction %>
+  </p>
+</div>
