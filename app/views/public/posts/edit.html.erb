@@ -10,6 +10,7 @@
   <%= f.label :images, "画像" %>
   <%= f.file_field :images, multiple: true %>
 
+<!--画像を削除できる記述-->
   <% if @post.images.present? %>
     <p>現在登録されている画像（削除するものはチェックしてください）</p>
     <% @post.images.each do |image| %>
