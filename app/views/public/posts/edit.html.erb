@@ -1,2 +1,22 @@
-<h1>Public::Posts#edit</h1>
-<p>Find me in app/views/public/posts/edit.html.erb</p>
+<h1>投稿編集画面</h1>
+
+<%= form_with model: @post, url: post_path(@post), method: :patch, local: true do |f| %>
+  <%= f.label :title, "タイトル" %>
+  <%= f.text_field :title, autofocus: true %>
+
+  <%= f.label :body, "テキスト" %>
+  <%= f.text_area :body, autofocus: true %>
+
+  <%= f.label :images, "画像" %>
+  <%= f.file_field :images, multiple: true %>
+
+  <% if @post.images.present? %>
+    <p>現在登録されている画像（削除するものはチェックしてください）</p>
+    <% @post.images.each do |image| %>
+      <%= f.check_box :image_ids, { multiple: true }, image.id, false %>
+      <%= image_tag image, size:"100x100" %> <br>
+    <% end %>
+  <% end %>
+
+  <%= f.submit "編集を保存" %>
+<% end %>
