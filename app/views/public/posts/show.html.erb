@@ -1,5 +1,14 @@
 <h1>投稿詳細</h1>
 
+<% if @post.user_id = current_user.id %>
+  <div>
+    <%= link_to "編集", edit_post_path(@post.id) %>
+  </div>
+  <div>
+    <%= link_to "削除", post_path(@post.id), method: :delete %>
+  </div>
+<% end %>
+
 <h2><%= @post.title %></h2>
 
 <p><%= @post.body %></p>
