@@ -26,15 +26,15 @@ class Public::PostsController < ApplicationController
   end
 
   def update
-    @post = Post.find(params[:id])
+    post = Post.find(params[:id])
     if params[:post] [:image_ids]
       params[:post] [:image_ids].each do |image_id|
         image = post.images.find(image_id)
         image.purge
       end
     end
-    if @post.update(post_params)
-      redirect_to post_path(@post)
+    if post.update(post_params)
+      redirect_to post_path(post)
     else
       render 'edit'
     end
@@ -49,6 +49,6 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :user_id, images: [])
+    params.require(:post).permit(:title, :body, :user_id, images: [ ])
   end
 end
