@@ -17,6 +17,7 @@ class User < ApplicationRecord
 # 年代のenumの定義
   enum age: { teens:0, twenties:1, thirties:2, fourties:3, fifties:4 }
 
+# プロフィール画像　登録されていない場合no_image画像を表示させる
   def get_profile_image(width, height)
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
@@ -24,9 +25,5 @@ class User < ApplicationRecord
     end
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
-
-  # def get_profile_image
-    # (profile_image.attached?) ? profile_image : 'no_image.jpg'
-  # end
 
 end

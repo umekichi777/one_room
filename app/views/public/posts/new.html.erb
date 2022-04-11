@@ -1,0 +1,14 @@
+<h1>新規登録</h1>
+
+<%= form_with model: @post, url: posts_path, local: true do |f| %>
+  <%= f.label :title, "タイトル" %>
+  <%= f.text_field :title, autofocus: true %>
+
+  <%= f.label :body, "テキスト" %>
+  <%= f.text_area :body, autofocus: true %>
+
+  <%= f.label :images, "画像" %>
+  <%= f.file_field :images, multiple: true %>
+
+  <%= f.submit "投稿" %>
+<% end %>

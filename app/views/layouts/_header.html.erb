@@ -7,7 +7,7 @@
         <%= link_to "マイページ", user_path(current_user.id) %>
       </li>
       <li>
-        <%= link_to "投稿一覧" %>
+        <%= link_to "投稿一覧", posts_path %>
       </li>
       <li>
         <%= link_to "ユーザー一覧", users_path %>
@@ -20,10 +20,10 @@
       </li>
     <% elsif admin_signed_in? %>
       <li>
-        <%= link_to "投稿一覧" %>
+        <%= link_to "投稿一覧", posts_path %>
       </li>
       <li>
-        <%= link_to "ユーザー一覧" %>
+        <%= link_to "ユーザー一覧", users_path %>
       </li>
       <li>
         <%= link_to "コミュニティ一覧" %>
