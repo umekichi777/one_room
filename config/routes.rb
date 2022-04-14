@@ -9,7 +9,9 @@ scope module: :public do
   root to: "homes#top"
   get 'about' => "homes#about", as: 'about'
   resources :users, only: [:index, :show, :edit, :update]
-  resources :posts
+  resources :posts do
+    resources :post_comments, only: [:create, :destroy]
+  end
 end
 
 # 管理者用
