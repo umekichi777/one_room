@@ -1,7 +1,9 @@
 class Group < ApplicationRecord
 
   has_many :user_groups
-  has_many :users, through: :user_groups
+  has_many :users, through: :user_groups, dependent: :destroy
+
+  belongs_to :user   # グループオーナー表示のために追記
 
   has_one_attached :group_image
 
