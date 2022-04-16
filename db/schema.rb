@@ -63,8 +63,10 @@ ActiveRecord::Schema.define(version: 2022_04_16_141727) do
     t.string "name"
     t.text "introduction"
     t.integer "owner_id"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_groups_on_user_id"
   end
 
   create_table "post_comments", force: :cascade do |t|
