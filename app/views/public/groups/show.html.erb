@@ -1,2 +1,6 @@
-<h1>Public::Groups#show</h1>
-<p>Find me in app/views/public/groups/show.html.erb</p>
+<h1>グループ詳細</h1>
+
+<%= image_tag @group.get_group_image(100,100) %>
+<%= @group.name %>
+<%= @group.introduction %>
+
