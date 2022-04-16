@@ -1,0 +1,27 @@
+  <h6 class="more" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">もっと見る....</h6>
+  <% post.post_comments.first(2).each do |post_comment| %>
+    <p><%= image_tag post_comment.user.get_profile_image(100,100) %></p>
+    <p><%= post_comment.user.user_name %></p>
+    <p>
+      <%= post_comment.created_at.strftime('%Y/%m/%d') %></br>
+      <%= post_comment.comment %>
+    </p>
+    <% if post_comment.user == current_user %>
+      <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete, remote: true %>
+    <% end %>
+  <% end %>
+
+  <!--3件目以降のコメント-->
+  <div class="collapse" id="collapseExample">
+    <% post.post_comments.offset(2).each do |post_comment| %>
+      <p><%= image_tag post_comment.user.get_profile_image(100,100) %></p>
+      <p><%= post_comment.user.user_name %></p>
+      <p>
+        <%= post_comment.created_at.strftime('%Y/%m/%d') %></br>
+        <%= post_comment.comment %>
+      </p>
+      <% if post_comment.user == current_user %>
+        <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete, remote: true %>
+      <% end %>
+    <% end %>
+  </div>

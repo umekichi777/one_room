@@ -1,36 +1,49 @@
-<h1>投稿一覧</h1>
+<div class="container px-sm-0">
+  <div class="row">
+    <div class="col-md-11 mx-auto">
+      <h1>投稿一覧</h1>
 
-<%= link_to 'new!', new_post_path %>
+      <div class="text-right mb-3 mr-sm-5">
+        <%= link_to 'new!', new_post_path %>
+      </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>UserName</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th colspan="6"></th>
-    </tr>
-  </thead>
-  <tbody>
-  <% @posts.each do |post| %>
-    <tr>
-      <td>
-        <%= post.title %>
-      </td>
-      <td>
-        <%= post.user.user_name %>
-      </td>
-      <% if post.user_id == current_user.id %>
-        <td>
-          <%= link_to "編集", edit_post_path(post.id) %>
-        </td>
-        <td>
-          <%= link_to "削除", post_path(post.id), method: :delete %>
-        </td>
-      <% end %>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+      <table class="table table-hover text-center">
+        <thead>
+          <tr>
+            <th>UserName</th>
+            <th>Title</th>
+            <th></th>
+            <th colspan="4"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @posts.each do |post| %>
+            <tr id="post_<%= post.id %>">
+              <td>
+                <%= link_to user_path(post.user_id) do %>
+                  <%= post.user.user_name %>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to post_path(post.id) do %>
+                  <%= post.title %>
+                <% end %>
+              </td>
+              <td class="favorite-btn">
+                <%= render "public/favorites/favorite-btn", post: post %>
+              </td>
+              <% if post.user_id == current_user.id %>
+                <td>
+                  <%= link_to "編集", edit_post_path(post.id) %>
+                </td>
+                <td>
+                  <%= link_to "削除", post_path(post.id), method: :delete %>
+                </td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
