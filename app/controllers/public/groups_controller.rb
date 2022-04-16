@@ -37,6 +37,22 @@ class Public::GroupsController < ApplicationController
     end
   end
 
+  # グループに参加
+  def join
+    @group = Group.find(params[:group_id])
+    @group.users << current_user
+    redirect_to  groups_path
+  end
+
+  # グループから退会
+  def destroy
+    @group = Group.find(params[:id])
+    #current_userは、@group.usersから消されるという記述
+    @group.users.delete(current_user)
+    redirect_to groups_path
+  end
+
+
 
   private
 

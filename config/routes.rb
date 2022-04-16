@@ -11,14 +11,16 @@ scope module: :public do
   get 'about' => "homes#about", as: 'about'
   resources :users, only: [:index, :show, :edit, :update] do
     resource :relationships, only: [:create, :destroy]
-    get 'followings' => 'relationships#followings', as: 'followings'
-    get 'followers' => 'relationships#followers', as: 'followers'
+    get 'followings' => "relationships#followings", as: 'followings'
+    get 'followers' => "relationships#followers", as: 'followers'
   end
   resources :posts do
     resources :post_comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
   end
-  resources :groups, except: [:destroy]
+  resources :groups do
+    get "join" => "groups#join"
+  end
 end
 
 # 管理者用

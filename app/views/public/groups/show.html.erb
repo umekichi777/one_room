@@ -1,6 +1,30 @@
 <h1>グループ詳細</h1>
 
-<%= image_tag @group.get_group_image(100,100) %>
-<%= @group.name %>
-<%= @group.introduction %>
+<div>
+  <% if @group.owner_id == current_user.id %>
+    <%= link_to "編集", edit_group_path(@group) %>
+  <% elsif @group.users.include?(current_user) %>
+    <%= link_to 'Leave', group_path(@group), method: :delete %>
+  <% else %>
+    <%= link_to 'Join', group_join_path(@group) %>
+  <% end %>
+</div>
+
+<div>
+  <%= image_tag @group.get_group_image(100,100) %>
+</div>
+
+<h2>
+  <%= @group.name %>
+</h2>
+
+<h4>グループ概要</h4>
+<p><%= @group.introduction %></p>
+
+<div>
+  <% @group.users.each do |member| %>
+    <%= member.name %>
+  <% end %>
+</div>
+
 

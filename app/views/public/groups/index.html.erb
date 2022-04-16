@@ -13,6 +13,7 @@
             <th></th>
             <th>Group</th>
             <th>Introduction</th>
+            <th>Members</th>
             <th colspan="4"></th>
           </tr>
         </thead>
@@ -30,14 +31,10 @@
               <td>
                 <%= group.introduction %>
               </td>
-              <% if post.user_id == current_user.id %>
-                <td>
-                  <%= link_to "編集", edit_post_path(post.id) %>
-                </td>
-                <td>
-                  <%= link_to "削除", post_path(post.id), method: :delete %>
-                </td>
-              <% end %>
+              <td>
+                <i class="fas fa-users"></i>
+                <%= group.users.count %>
+              </td>
             </tr>
           <% end %>
         </tbody>
