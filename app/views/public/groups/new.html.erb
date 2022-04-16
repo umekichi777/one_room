@@ -1,0 +1,20 @@
+<div>
+  <div>
+    <div>
+      <h1>グループ作成</h1>
+
+      <%= form_with model: @group, url: groups_path, local: true do |f| %>
+        <%= f.label :name, "グループ名" %>
+        <%= f.text_field :name, autofocus: true %>
+
+        <%= f.label :introduction, "グループ紹介" %>
+        <%= f.text_area :introduction, autofocus: true %>
+
+        <%= f.label :group_image, "グループ画像" %>
+        <%= f.file_field :group_image, accept: "image*/" %>
+
+        <%= f.submit "作成" %>
+      <% end %>
+    </div>
+  </div>
+</div>

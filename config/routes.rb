@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-# 顧客用
+
+# ユーザー用
 devise_for :users, skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
@@ -17,6 +18,7 @@ scope module: :public do
     resources :post_comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
   end
+  resources :groups, except: [:destroy]
 end
 
 # 管理者用
