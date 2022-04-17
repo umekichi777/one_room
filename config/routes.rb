@@ -20,6 +20,7 @@ scope module: :public do
   end
   resources :groups do
     get "join" => "groups#join"
+    delete "all_destroy" => "groups#all_destroy"
   end
 end
 

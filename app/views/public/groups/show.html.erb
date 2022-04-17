@@ -3,6 +3,7 @@
 <div>
   <% if @group.owner_id == current_user.id %>
     <%= link_to "編集", edit_group_path(@group) %>
+    <%= link_to "削除", group_all_destroy_path(@group), method: :delete, data: { confirm: '本当に削除しますか？' } %>
   <% elsif @group.users.include?(current_user) %>
     <%= link_to 'Leave', group_path(@group), method: :delete %>
   <% else %>

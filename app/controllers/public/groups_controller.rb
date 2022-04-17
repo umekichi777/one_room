@@ -37,6 +37,13 @@ class Public::GroupsController < ApplicationController
     end
   end
 
+  def all_destroy
+    @group = Group.find(params[:group_id])
+    if @group.destroy
+      redirect_to groups_path
+    end
+  end
+
   # グループに参加
   def join
     @group = Group.find(params[:group_id])
