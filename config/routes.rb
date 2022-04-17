@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-# 顧客用
+
+# ユーザー用
 devise_for :users, skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
@@ -10,12 +11,16 @@ scope module: :public do
   get 'about' => "homes#about", as: 'about'
   resources :users, only: [:index, :show, :edit, :update] do
     resource :relationships, only: [:create, :destroy]
-    get 'followings' => 'relationships#followings', as: 'followings'
-    get 'followers' => 'relationships#followers', as: 'followers'
+    get 'followings' => "relationships#followings", as: 'followings'
+    get 'followers' => "relationships#followers", as: 'followers'
   end
   resources :posts do
     resources :post_comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
+  end
+  resources :groups do
+    get "join" => "groups#join"
+    delete "all_destroy" => "groups#all_destroy"
   end
 end
 

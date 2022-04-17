@@ -7,7 +7,7 @@
       <%= post_comment.comment %>
     </p>
     <% if post_comment.user == current_user %>
-      <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete, remote: true %>
+      <%= link_to "削除", post_post_comment_path(post, post_comment), method: :delete, remote: true %>
     <% end %>
   <% end %>
 
@@ -21,7 +21,7 @@
         <%= post_comment.comment %>
       </p>
       <% if post_comment.user == current_user %>
-        <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete, remote: true %>
+        <%= link_to "削除", post_post_comment_path(post, post_comment), method: :delete, remote: true %>
       <% end %>
     <% end %>
   </div>
