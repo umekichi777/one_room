@@ -9,18 +9,25 @@ devise_for :users, skip: [:passwords], controllers: {
 scope module: :public do
   root to: "homes#top"
   get 'about' => "homes#about", as: 'about'
+
   resources :users, only: [:index, :show, :edit, :update] do
     resource :relationships, only: [:create, :destroy]
     get 'followings' => "relationships#followings", as: 'followings'
     get 'followers' => "relationships#followers", as: 'followers'
   end
+
   resources :posts do
     resources :post_comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
   end
+
   resources :groups do
     get "join" => "groups#join"
     delete "all_destroy" => "groups#all_destroy"
+  end
+
+  resources :tags do
+    get "search_tag"=>"posts#search_tag"
   end
 end
 

@@ -19,6 +19,7 @@ class Public::PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    @tag_list = Tag.all
   end
 
   def show
@@ -56,6 +57,13 @@ class Public::PostsController < ApplicationController
     @post.destroy
     redirect_to posts_path
   end
+
+  def search_tag
+    @tag_list = Tag.all
+    @tag = Tag.find(params[:tag_id])
+    @posts = @tag.posts.all
+  end
+
 
   private
 
