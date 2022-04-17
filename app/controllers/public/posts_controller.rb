@@ -1,12 +1,16 @@
 class Public::PostsController < ApplicationController
   def new
     @post = Post.new
+    @tag_list = @post.tags.pluck(:name).join(',')
   end
 
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
+    # 受け取った値を , で区切って配列にする
+    tag_list = params[:post][:name].split(',')
     if @post.save
+      @post.save_tag(tag_list)
       redirect_to post_path(@post)
     else
       render 'new'
@@ -15,6 +19,7 @@ class Public::PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    @tag_list = Tag.all
   end
 
   def show
@@ -22,10 +27,12 @@ class Public::PostsController < ApplicationController
     @post_comment = PostComment.new
     # コメントを最新順に表示
     @post_comments = @post.post_comments.order(created_at: :desc)
+    @post_tags = @post.tags
   end
 
   def edit
     @post = Post.find(params[:id])
+    @tag_list = @post.tags.pluck(:name).join(',')
   end
 
   def update
@@ -36,7 +43,9 @@ class Public::PostsController < ApplicationController
         image.purge
       end
     end
+    tag_list=params[:post][:name].split(',')
     if post.update(post_params)
+      @post.save_tag(tag_list)
       redirect_to post_path(post)
     else
       render 'edit'
@@ -48,6 +57,13 @@ class Public::PostsController < ApplicationController
     @post.destroy
     redirect_to posts_path
   end
+
+  def search_tag
+    @tag_list = Tag.all
+    @tag = Tag.find(params[:tag_id])
+    @posts = @tag.posts.all
+  end
+
 
   private
 

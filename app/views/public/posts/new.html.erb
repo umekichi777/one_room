@@ -9,6 +9,9 @@
 
   <%= f.label :images, "画像" %>
   <%= f.file_field :images, multiple: true, accept: "image*/" %>
+  
+  <%= f.label"タグ (,で区切ると複数タグ登録できます)" %>
+  <%= f.text_field :name,value: @tag_list,class:"form-control"%>
 
   <%= f.submit "投稿" %>
 <% end %>
