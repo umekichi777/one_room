@@ -20,6 +20,10 @@
     <% end %>
   <% end %>
 
+  <% @post_tags.each do |tag| %>
+    <%= tag.name %>
+  <% end %>
+
   <div>
     <!--いいね機能の実装-->
     <div class="favorite-btn">
