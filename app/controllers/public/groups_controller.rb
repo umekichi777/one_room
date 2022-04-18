@@ -10,6 +10,7 @@ class Public::GroupsController < ApplicationController
     @group = current_user.owned_groups.new(group_params)
     @group.owner_id = current_user.id
     if @group.save
+      flash[:notice] = "グループを作成しました！"
       redirect_to group_path(@group.id)
     else
       render 'new'
@@ -31,6 +32,7 @@ class Public::GroupsController < ApplicationController
   def update
     @group = Group.find(params[:id])
     if @group.update(group_params)
+      flash[:notice] = "グループを編集しました！"
       redirect_to group_path(@group.id)
     else
       render 'edit'
@@ -40,6 +42,7 @@ class Public::GroupsController < ApplicationController
   def all_destroy
     @group = Group.find(params[:group_id])
     if @group.destroy
+      flash[:notice] = "グループを削除しました！"
       redirect_to groups_path
     end
   end
@@ -48,6 +51,7 @@ class Public::GroupsController < ApplicationController
   def join
     @group = Group.find(params[:group_id])
     @group.users << current_user
+    flash[:notice] = "参加しました！"
     redirect_to  groups_path
   end
 
@@ -56,6 +60,7 @@ class Public::GroupsController < ApplicationController
     @group = Group.find(params[:id])
     #current_userは、@group.usersから消されるという記述
     @group.users.delete(current_user)
+    flash[:notice] = "退会しました！"
     redirect_to groups_path
   end
 
