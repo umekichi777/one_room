@@ -16,18 +16,21 @@ scope module: :public do
     get 'followers' => "relationships#followers", as: 'followers'
   end
 
+  get 'users/:id/unsubscribe' => "users#unsubscribe", as: 'unsubscribe'
+  patch 'users/:id/withdrawal' => "users#withdrawal", as: 'withdrawal'
+
   resources :posts do
     resources :post_comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
   end
 
   resources :groups do
-    get "join" => "groups#join"
-    delete "all_destroy" => "groups#all_destroy"
+    get 'join' => "groups#join"
+    delete 'all_destroy' => "groups#all_destroy"
   end
 
   resources :tags do
-    get "search_tag"=>"posts#search_tag"
+    get 'search_tag'=>"posts#search_tag"
   end
 end
 
