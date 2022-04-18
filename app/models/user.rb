@@ -30,6 +30,13 @@ class User < ApplicationRecord
   enum age: { teens:0, twenties:1, thirties:2, fourties:3, fifties:4 }
 
 
+  def self.guest
+    find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "guestuser"
+    end
+  end
+
   # プロフィール画像　登録されていない場合no_image画像を表示させる
   def get_profile_image(width, height)
     unless profile_image.attached?

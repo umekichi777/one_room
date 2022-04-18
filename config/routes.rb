@@ -5,6 +5,9 @@ devise_for :users, skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
+devise_scope :user do
+  post 'public/users/guest_sign_in' => "public/users/sessions#guest_sign_in"git
+end
 
 scope module: :public do
   root to: "homes#top"
