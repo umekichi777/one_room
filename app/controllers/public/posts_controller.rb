@@ -8,9 +8,9 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     # 受け取った値を , で区切って配列にする
-    tag_list = params[:post][:name].split(',')
+    tag_list = params[:post][:tag_ids].split(',')
     if @post.save
-      @post.save_tag(tag_list)
+      @post.save_tags(tag_list)
       flash[:notice] = "投稿しました！"
       redirect_to post_path(@post)
     else
@@ -37,22 +37,22 @@ class Public::PostsController < ApplicationController
   end
 
   def update
-    post = Post.find(params[:id])
+    @post = Post.find(params[:id])
     if params[:post] [:image_ids]
       params[:post] [:image_ids].each do |image_id|
-        image = post.images.find(image_id)
+        image = @post.images.find(image_id)
         image.purge
       end
     end
-    tag_list = params[:post][:name].split(',')
-    if post.update(post_params)
+    tag_list = params[:post][:tag_ids].split(',')
+    if @post.update(post_params)
       @old_relations = PostTag.where(post_id: @post.id)
       @old_relations.each do |relation|
         relation.delete
       end
-      @post.save_tag(tag_list)
+      @post.save_tags(tag_list)
       flash[:notice] = "投稿を編集しました！"
-      redirect_to post_path(post)
+      redirect_to post_path(@post)
     else
       render 'edit'
     end

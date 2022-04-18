@@ -20,7 +20,7 @@
   <% end %>
 
   <%= f.label"タグ (,で区切ると複数タグ登録できます)" %>
-  <%= f.text_field :name,value: @tag_list,class:"form-control"%>
+  <%= f.text_field :tag_ids, value: @tag_list, class: "form-control" %>
 
   <%= f.submit "編集を保存" %>
 <% end %>

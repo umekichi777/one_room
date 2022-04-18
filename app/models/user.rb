@@ -29,6 +29,7 @@ class User < ApplicationRecord
   # 年代のenumの定義
   enum age: { teens:0, twenties:1, thirties:2, fourties:3, fifties:4 }
 
+
   # プロフィール画像　登録されていない場合no_image画像を表示させる
   def get_profile_image(width, height)
     unless profile_image.attached?
@@ -51,12 +52,6 @@ class User < ApplicationRecord
   # フォローしているか判定
   def following?(user)
     followings.include?(user)
-  end
-
-  # ログイン時、退会済のユーザーが同じアカウントでログインできないよう制約を設ける
-  # is_deletedがfalseならtrueを返す
-  def active_for_authentication?
-    super && (is_deleted == false)
   end
 
 end

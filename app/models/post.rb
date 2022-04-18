@@ -17,7 +17,7 @@ class Post < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
 
-  def save_tag(sent_tags)
+  def save_tags(sent_tags)
     # タグが存在していれば、タグの名前を配列として全て取得
     current_tags = self.tags.pluck(:name) unless self.tags.nil?
     # 現在存在するタグ(current_tag)から新しく送られてきたタグ(sent_tag)を除いてold_tagとする
