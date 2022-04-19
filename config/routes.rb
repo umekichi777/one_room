@@ -5,8 +5,9 @@ devise_for :users, skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
+# ゲストユーザー用
 devise_scope :user do
-  post 'public/users/guest_sign_in' => "public/users/sessions#guest_sign_in"git
+  post 'users/guest_sign_in', to: "users/sessions#guest_sign_in"
 end
 
 scope module: :public do
