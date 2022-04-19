@@ -34,6 +34,9 @@ scope module: :public do
   resources :groups do
     get 'join' => "groups#join"
     delete 'all_destroy' => "groups#all_destroy"
+    collection do
+      get 'search' => "groups#search"
+    end
   end
 
   resources :tags do

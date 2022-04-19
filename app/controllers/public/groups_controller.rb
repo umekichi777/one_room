@@ -1,6 +1,7 @@
 class Public::GroupsController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update]
+  before_action :set_q, only: [:index, :search]
 
   def new
     @group = Group.new
@@ -64,9 +65,17 @@ class Public::GroupsController < ApplicationController
     redirect_to groups_path
   end
 
+  def search
+    @results = @q.result
+  end
+
 
 
   private
+
+  def set_q
+    @q = Group.ransack(params[:q])
+  end
 
   def group_params
     params.require(:group).permit(:name, :introduction, :group_image)
