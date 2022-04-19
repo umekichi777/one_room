@@ -5,6 +5,10 @@ devise_for :users, skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
+# ゲストユーザー用
+devise_scope :user do
+  post 'users/guest_sign_in', to: "users/sessions#guest_sign_in"
+end
 
 scope module: :public do
   root to: "homes#top"
