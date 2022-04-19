@@ -58,6 +58,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'devise-i18n'
 gem 'enum_help'
+gem 'ransack'
 
 gem 'dotenv-rails'
 group :production do

@@ -1,4 +1,6 @@
 class Public::PostsController < ApplicationController
+  before_action :set_q, only: [:index, :search]
+
   def new
     @post = Post.new
     @tag_list = @post.tags.pluck(:name).join(',')
@@ -65,6 +67,10 @@ class Public::PostsController < ApplicationController
     redirect_to posts_path
   end
 
+  def search
+    @results = @q.result
+  end
+
   def search_tag
     @tag_list = Tag.all
     @tag = Tag.find(params[:tag_id])
@@ -72,7 +78,12 @@ class Public::PostsController < ApplicationController
   end
 
 
+
   private
+
+  def set_q
+    @q = Post.ransack(params[:q])
+  end
 
   def post_params
     params.require(:post).permit(:title, :body, :user_id, images: [ ])

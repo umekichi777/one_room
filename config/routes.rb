@@ -26,11 +26,17 @@ scope module: :public do
   resources :posts do
     resources :post_comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
+    collection do
+      get 'search' => "posts#search"
+    end
   end
 
   resources :groups do
     get 'join' => "groups#join"
     delete 'all_destroy' => "groups#all_destroy"
+    collection do
+      get 'search' => "groups#search"
+    end
   end
 
   resources :tags do
