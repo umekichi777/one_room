@@ -50,7 +50,16 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 }
 
 namespace :admin do
-  resources :users, only: [:index, :show]
+  root to: "posts#index"
+  resources :posts, only: [:index, :show] do
+    collection do
+      get 'search' => "posts#search"
+    end
+  end
+
+  resources :tags do
+    get 'search_tag'=>"posts#search_tag"
+  end
 end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
