@@ -16,8 +16,8 @@
     </header>
     <main>
       <% if flash[:notice] %>
-        <div class="alert alert-success" role="alert">
-          <p class="notice text-center" style="color:green;"><%= flash[:notice] %></p>
+        <div class="alert alert-primary" role="alert">
+          <p class="notice text-center alert-link"><%= flash[:notice] %></p>
         </div>
       <% end %>
 
