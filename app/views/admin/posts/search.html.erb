@@ -25,8 +25,8 @@
                   <%= post.title %>
                 <% end %>
               </td>
-              <td class="favorite-btn">
-                <%= render "public/favorites/favorite-btn", post: post %>
+              <td>
+                <%= post.favorites.count %>
               </td>
             </tr>
           <% end %>

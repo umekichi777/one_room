@@ -3,26 +3,26 @@
     <div class="col-md-11 mx-auto">
       <h1>投稿一覧</h1>
 
-      <!--<div>-->
-        <%#= search_form_for @q, url: search_admin_posts_path do |f| %>
-          <%#= f.search_field :title_cont %>
-          <%#= f.submit "検索" %>
-        <%# end %>
-      <!--</div>-->
+      <div>
+        <%= search_form_for @q, url: search_admin_posts_path do |f| %>
+          <%= f.search_field :title_cont %>
+          <%= f.submit "検索" %>
+        <% end %>
+      </div>
 
       <div>
         <table>
           <tbody>
-          <%# @tag_list.each do |list| %>
+          <% @tag_list.each do |list| %>
             <tr>
               <td>
-                <%#= link_to admin_tag_search_tag_path(tag_id: list.id) do %>
-                  <%#= list.name %>
-                <%# end %>
-                <%#="(#{list.posts.count})" %>
+                <%= link_to admin_tag_search_tag_path(tag_id: list.id) do %>
+                  <%= list.name %>
+                <% end %>
+                <%="(#{list.posts.count})" %>
               </td>
             </tr>
-          <%# end %>
+          <% end %>
           </tbody>
         </table>
       </div>
@@ -49,9 +49,7 @@
                   <%= post.title %>
                 <% end %>
               </td>
-              <!--<td class="favorite-btn">-->
-                <%#= render "public/favorites/favorite-btn", post: post %>
-              <!--</td>-->
+              <td><%= post.favorites.count %></td>
             </tr>
           <% end %>
         </tbody>

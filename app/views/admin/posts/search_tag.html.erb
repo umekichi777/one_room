@@ -3,7 +3,7 @@
 
   <!--タグリスト-->
   <% @tag_list.each do |list|%>
-    <%=link_to tag_search_tag_path(tag_id: list.id) do %>
+    <%=link_to admin_tag_search_tag_path(tag_id: list.id) do %>
       <%= list.name %>
     <% end %>
     <%="(#{list.posts.count})" %>
