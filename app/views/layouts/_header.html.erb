@@ -1,6 +1,6 @@
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
-      <h2>1RooM</h2>
+      <h1 class="header-theme">1RooM</h1>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -9,42 +9,42 @@
         <% if user_signed_in? %>
           <p class="mr-sm-5">Welcome! <%= current_user.user_name %>さん!</p>
           <li class="nav-item">
-            <%= link_to "マイページ", user_path(current_user.id), class: 'nav-link text-dark' %>
+            <%= link_to "マイページ", user_path(current_user.id), class: 'nav-link text-light' %>
           </li>
           <li class="nav-item">
-            <%= link_to "投稿一覧", posts_path, class: 'nav-link text-dark' %>
+            <%= link_to "投稿一覧", posts_path, class: 'nav-link text-light' %>
           </li>
           <li class="nav-item">
-            <%= link_to "ユーザー一覧", users_path, class: 'nav-link text-dark' %>
+            <%= link_to "ユーザー一覧", users_path, class: 'nav-link text-light' %>
           </li>
           <li class="nav-item">
-            <%= link_to "グループ一覧", groups_path, class: 'nav-link text-dark' %>
+            <%= link_to "グループ一覧", groups_path, class: 'nav-link text-light' %>
           </li>
           <li class="nav-item">
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-light' %>
           </li>
         <% elsif admin_signed_in? %>
           <li class="nav-item">
-            <%= link_to "投稿一覧", admin_posts_path, class: 'nav-link text-dark' %>
+            <%= link_to "投稿一覧", admin_posts_path, class: 'nav-link text-light' %>
           </li>
           <li class="nav-item">
-            <%= link_to "ユーザー一覧", admin_users_path, class: 'nav-link text-dark' %>
+            <%= link_to "ユーザー一覧", admin_users_path, class: 'nav-link text-light' %>
           </li>
           <li class="nav-item">
-            <%= link_to "グループ一覧", admin_groups_path, class: 'nav-link text-dark' %>
+            <%= link_to "グループ一覧", admin_groups_path, class: 'nav-link text-light' %>
           </li>
           <li class="nav-item">
-            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' %>
+            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-light' %>
           </li>
         <% else %>
           <li class="nav-item">
-            <%= link_to "About", about_path, class: 'nav-link text-dark' %>
+            <%= link_to "About", about_path, class: 'nav-link text-light' %>
           </li>
           <li class="nav-item">
-            <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-dark' %>
+            <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-light' %>
           </li>
           <li class="nav-item">
-            <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-dark' %>
+            <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-light' %>
           </li>
         <% end %>
         </ul>
@@ -55,8 +55,13 @@
 
 
   <style>
-    h2 {
+    .header-theme {
       color: #fcc800;
+      font-family: "Lucida Console", Courier, monospace;
+    }
+
+    .nav-item {
+      font-size: 17px;
     }
   </style>
 
