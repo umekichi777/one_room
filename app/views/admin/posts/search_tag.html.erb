@@ -14,7 +14,7 @@
       <div class="card-body">
       <!--タイトル表示される文字数は２５文字までにしてます-->
         <h6 class="card-title">
-          <%=link_to post_path(post.id) do %>
+          <%=link_to admin_post_path(post.id) do %>
             <%= post.title.truncate(25) %>
           <% end %>
         </h6>

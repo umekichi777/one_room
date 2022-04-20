@@ -25,7 +25,7 @@
           </li>
         <% elsif admin_signed_in? %>
           <li class="nav-item">
-            <%= link_to "投稿一覧", posts_path, class: 'nav-link text-dark' %>
+            <%= link_to "投稿一覧", admin_posts_path, class: 'nav-link text-dark' %>
           </li>
           <li class="nav-item">
             <%= link_to "ユーザー一覧", users_path, class: 'nav-link text-dark' %>
@@ -34,7 +34,7 @@
             <%= link_to "グループ一覧", groups_path, class: 'nav-link text-dark' %>
           </li>
           <li class="nav-item">
-            <%= link_to "ログアウト", destroy_admin_session_path, class: 'nav-link text-dark' %>
+            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' %>
           </li>
         <% else %>
           <li class="nav-item">
