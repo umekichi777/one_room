@@ -44,13 +44,31 @@ scope module: :public do
   end
 end
 
+
 # 管理者用
 devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
 
 namespace :admin do
+  root to: "posts#index"
+  resources :posts, only: [:index, :show] do
+    collection do
+      get 'search' => "posts#search"
+    end
+  end
+
   resources :users, only: [:index, :show]
+
+  resources :groups, only: [:index, :show] do
+    collection do
+      get 'search' => "groups#search"
+    end
+  end
+
+  resources :tags do
+    get 'search_tag'=>"posts#search_tag"
+  end
 end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

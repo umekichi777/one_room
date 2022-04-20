@@ -1,0 +1,39 @@
+<div>
+  <div>
+    <div>
+      <h1>グループ検索結果</h1>
+      <table class="table table-hover text-center">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Group</th>
+            <th>Introduction</th>
+            <th>Members</th>
+            <th colspan="4"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @results.each do |group| %>
+            <tr>
+              <td>
+                <%= image_tag group.get_group_image(100,100) %>
+              </td>
+              <td>
+                <%= link_to admin_group_path(group.id) do %>
+                  <%= group.name %>
+                <% end %>
+              </td>
+              <td>
+                <%= group.introduction.truncate(25) %>
+              </td>
+              <td>
+                <i class="fas fa-users"></i>
+                <%= group.users.count %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
