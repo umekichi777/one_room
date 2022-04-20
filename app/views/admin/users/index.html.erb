@@ -1,6 +1,6 @@
 <h1>ユーザー一覧</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th></th>
@@ -18,10 +18,13 @@
         <%= image_tag user.get_profile_image(50,50) %>
       </td>
       <td>
-        <%= link_to user_path(user.id) do %>
+        <%= link_to admin_user_path(user.id) do %>
         <%= user.user_name %>
         <% end %>
       </td>
+      <td><%= user.followings.count %></td>
+      <td><%= user.followers.count %></td>
+      <td><%= user.is_deleted? ? "退会" : "有効" %></td>
     </tr>
   <% end %>
   </tbody>

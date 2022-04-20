@@ -57,6 +57,8 @@ namespace :admin do
     end
   end
 
+  resources :users, only: [:index, :show]
+
   resources :tags do
     get 'search_tag'=>"posts#search_tag"
   end
