@@ -27,55 +27,43 @@
 
       <div class="col-md-5 offset-1 mt-4">
         <% if @user.id == current_user.id %>
-          <p>
-            Account Name:</br>
-            <%= @user.user_name %>
-          </p>
-          <p>
-            Age:</br>
-            <%= @user.age_i18n %>
-          </p>
-          <P>
-            Introduction:</br>
-            <%= @user.introduction %>
-          </P>
-          <p class="mt-2" style="display: inline-block;">
+          <h5 class="font-italic">Account Name:</br></h5>
+            <p><%= @user.user_name %></p>
+          <h5 class="font-italic">Age:</br></h5>
+            <p><%= @user.age_i18n %></p>
+          <h5 class="font-italic">Introduction:</br></h5>
+            <p><%= @user.introduction %></p>
+          <h5 class="font-italic mt-2" style="display: inline-block;">
             follow:
             <%= link_to user_followings_path(@user) do %>
               <%= @user.followings.count %>
             <% end %>
-          </p>
-          <p style="display: inline-block; margin-left: 15px;">
+          </h5>
+          <h5 class="font-italic" style="display: inline-block; margin-left: 15px;">
             follower:
             <%= link_to user_followers_path(@user) do %>
               <%= @user.followers.count %>
             <% end %>
-          </p>
+          </h5>
         <% else %>
-          <p>
-            Account Name:</br>
-            <%= @user.user_name %>
-          </p>
-          <p>
-            Age:</br>
-            <%= @user.age_i18n %>
-          </p>
-          <P>
-            Introduction:</br>
-            <%= @user.introduction %>
-          </P>
-          <p class="mt-2" style="display: inline-block;">
-            follow:</br>
+          <h5 class="font-italic">Account Name:</br></h5>
+            <p><%= @user.user_name %></p>
+          <h5 class="font-italic">Age:</br></h5>
+            <p><%= @user.age_i18n %></p>
+          <h5 class="font-italic">Introduction:</br></h5>
+            <p><%= @user.introduction %></p>
+          <h5 class="font-italic mt-2" style="display: inline-block;">
+            follow:
             <%= link_to user_followings_path(@user) do %>
               <%= @user.followings.count %>
             <% end %>
-          </p>
-          <p style="display: inline-block; margin-left: 15px;">
-            follower:</br>
+          </h5>
+          <h5 class="font-italic" style="display: inline-block; margin-left: 15px;">
+            follower:
             <%= link_to user_followers_path(@user) do %>
               <%= @user.followers.count %>
             <% end %>
-          </p>
+          </h5>
         <% end %>
       </div>
 

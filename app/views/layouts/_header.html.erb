@@ -7,15 +7,12 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
         <% if user_signed_in? %>
-          <p class="mr-sm-5">Welcome! <%= current_user.user_name %>さん!</p>
+          <p class="mr-sm-5 text-warning">Welcome! <%= current_user.user_name %>さん!</p>
           <li class="nav-item">
             <%= link_to "ユーザー情報", user_path(current_user.id), class: 'nav-link text-light' %>
           </li>
           <li class="nav-item">
             <%= link_to "投稿一覧", posts_path, class: 'nav-link text-light' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "ユーザー一覧", users_path, class: 'nav-link text-light' %>
           </li>
           <li class="nav-item">
             <%= link_to "グループ一覧", groups_path, class: 'nav-link text-light' %>
