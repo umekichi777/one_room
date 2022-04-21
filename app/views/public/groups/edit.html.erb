@@ -1,19 +1,29 @@
-<div>
-  <div>
-    <div>
+<div class="container">
+  <div class="row mt-sm-5 mb-sm-5">
+    <div class="col-md-8">
       <h1>グループ編集</h1>
 
+      <%= render 'layouts/error_message', resource: @user %>
+
       <%= form_with model: @group, url: group_path(@group), method: :patch, local: true do |f| %>
-        <%= f.label :name, "グループ名" %>
-        <%= f.text_field :name, autofocus: true %>
+        <div class="form-group">
+          <%= f.label :name, "グループ名" %>
+          <%= f.text_field :name, autofocus: true, class: "form-control" %>
+        </div>
 
-        <%= f.label :introduction, "グループ紹介" %>
-        <%= f.text_area :introduction, autofocus: true %>
+        <div class="form-group">
+          <%= f.label :introduction, "グループ紹介" %>
+          <%= f.text_area :introduction, autofocus: true, class: "form-control input-lg" %>
+        </div>
 
-        <%= f.label :group_image, "グループ画像" %>
-        <%= f.file_field :group_image, accept: "image*/" %>
+        <div class="form-group">
+          <%= f.label :group_image, "グループ画像" %>
+          <%= f.file_field :group_image, accept: "image*/" %>
+        </div>
 
-        <%= f.submit "変更を保存" %>
+        <div class="form-group">
+          <%= f.submit "変更を保存", class: "btn btn-success" %>
+        </div>
       <% end %>
     </div>
   </div>
