@@ -1,17 +1,35 @@
-<h1>新規登録</h1>
+<div class="container">
+  <div class="row mt-sm-5 mb-sm-5">
+    <div class="col-md-8">
+      <h1>新規登録</h1>
 
-<%= form_with model: @post, url: posts_path, local: true do |f| %>
-  <%= f.label :title, "タイトル" %>
-  <%= f.text_field :title, autofocus: true %>
+      <%= form_with model: @post, url: posts_path, local: true do |f| %>
+      <%= render 'layouts/error_message', resource: f.object %>
+      
+        <div class="form-group">
+          <%= f.label :title, "タイトル" %>
+          <%= f.text_field :title, autofocus: true, class: "form-control" %>
+        </div>
 
-  <%= f.label :body, "テキスト" %>
-  <%= f.text_area :body, autofocus: true %>
+        <div class="form-group">
+          <%= f.label :body, "内容" %>
+          <%= f.text_area :body, autofocus: true, class: "form-control input-lg" %>
+        </div>
 
-  <%= f.label :images, "画像" %>
-  <%= f.file_field :images, multiple: true, accept: "image*/" %>
+        <div class="form-group">
+          <%= f.label :images, "画像" %>
+          <%= f.file_field :images, multiple: true, accept: "image*/" %>
+        </div>
 
-  <%= f.label"タグ (,で区切ると複数タグ登録できます)" %>
-  <%= f.text_field :tag_ids, value: @tag_list, class: "form-control" %>
+        <div class="form-group">
+          <%= f.label"タグ (,で区切ると複数タグ登録できます)" %>
+          <%= f.text_field :tag_ids, value: @tag_list, class: "form-control" %>
+        </div>
 
-  <%= f.submit "投稿" %>
-<% end %>
+        <div class="form-group">
+          <%= f.submit "投稿", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,13 +1,13 @@
 <div class="container mt-sm-5 mb-sm-5 px-sm-0">
   <div class="row">
     <div class="col-11">
-      
+
       <h1>グループ詳細</h1>
 
         <div class="text-right mb-3">
           <% if @group.owner_id == current_user.id %>
             <%= link_to "編集", edit_group_path(@group), class: "btn btn-success" %>
-            <%= link_to "削除", group_all_destroy_path(@group), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-danger" %>
+            <%= link_to "削除", group_all_destroy_path(@group), method: :delete, class: "btn btn-danger ml-2", data: { confirm: '本当に削除しますか？' } %>
           <% elsif @group.users.include?(current_user) %>
             <%= link_to 'Leave', group_path(@group), method: :delete, class: "btn btn-danger" %>
           <% else %>

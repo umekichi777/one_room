@@ -1,26 +1,46 @@
-<h1>投稿編集画面</h1>
+<div class="container">
+  <div class="row mt-sm-5 mb-sm-5">
+    <div class="col-md-8">
+      <h1>投稿編集画面</h1>
 
-<%= form_with model: @post, url: post_path(@post), method: :patch, local: true do |f| %>
-  <%= f.label :title, "タイトル" %>
-  <%= f.text_field :title, autofocus: true %>
+      <%= form_with model: @post, url: post_path(@post), method: :patch, local: true do |f| %>
+      <%= render 'layouts/error_message', resource: f.object %>
+      
+        <div class="form-group">
+          <%= f.label :title, "タイトル" %>
+          <%= f.text_field :title, autofocus: true, class: "form-control" %>
+        </div>
 
-  <%= f.label :body, "テキスト" %>
-  <%= f.text_area :body, autofocus: true %>
+        <div class="form-group">
+          <%= f.label :body, "内容" %>
+          <%= f.text_area :body, autofocus: true, class: "form-control input-lg" %>
+        </div>
 
-  <%= f.label :images, "画像" %>
-  <%= f.file_field :images, multiple: true %>
+        <div class="form-group">
+          <%= f.label :images, "画像" %>
+          <%= f.file_field :images, multiple: true %>
+        </div>
 
-<!--画像を削除できる記述-->
-  <% if @post.images.present? %>
-    <p>現在登録されている画像（削除するものはチェックしてください）</p>
-    <% @post.images.each do |image| %>
-      <%= f.check_box :image_ids, { multiple: true }, image.id, false %>
-      <%= image_tag image, size:"100x100" %> <br>
-    <% end %>
-  <% end %>
+        <!--画像を削除できる記述-->
+        <% if @post.images.present? %>
+          <div class="form-group">
+            <p>現在登録されている画像（削除するものはチェックしてください）</p>
+            <% @post.images.each do |image| %>
+              <%= f.check_box :image_ids, { multiple: true }, image.id, false %>
+              <%= image_tag image, size:"100x100" %> <br>
+            <% end %>
+          </div>
+        <% end %>
 
-  <%= f.label"タグ (,で区切ると複数タグ登録できます)" %>
-  <%= f.text_field :tag_ids, value: @tag_list, class: "form-control" %>
+        <div class="form-group">
+          <%= f.label"タグ (,で区切ると複数タグ登録できます)" %>
+          <%= f.text_field :tag_ids, value: @tag_list, class: "form-control" %>
+        </div>
 
-  <%= f.submit "編集を保存" %>
-<% end %>
+        <div class="form-group">
+          <%= f.submit "編集を保存", class: "btn btn-success" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

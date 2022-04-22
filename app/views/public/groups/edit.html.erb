@@ -3,9 +3,9 @@
     <div class="col-md-8">
       <h1>グループ編集</h1>
 
-      <%= render 'layouts/error_message', resource: @user %>
-
       <%= form_with model: @group, url: group_path(@group), method: :patch, local: true do |f| %>
+      <%= render 'layouts/error_message', resource: f.object %>
+
         <div class="form-group">
           <%= f.label :name, "グループ名" %>
           <%= f.text_field :name, autofocus: true, class: "form-control" %>

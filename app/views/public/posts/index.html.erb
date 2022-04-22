@@ -1,13 +1,13 @@
 <div class="container mt-sm-5 mb-sm-5 px-sm-0">
   <h1>投稿一覧</h1>
-  
+
     <div class="text-right mt-4">
       <%= search_form_for @q, url: search_posts_path do |f| %>
         <%= f.search_field :title_cont %>
         <%= f.submit "検索" %>
       <% end %>
     </div>
-    
+
     <div class="text-right mt-3 mb-3">
       <%= link_to 'new!', new_post_path, class: "btn btn-outline-info" %>
     </div>
@@ -55,9 +55,7 @@
                 <% if post.user_id == current_user.id %>
                   <td>
                     <%= link_to "編集", edit_post_path(post.id), class: "btn btn-success" %>
-                  </td>
-                  <td>
-                    <%= link_to "削除", post_path(post.id), method: :delete, class: "btn btn-danger" %>
+                    <%= link_to "削除", post_path(post.id), method: :delete, class: "btn btn-danger ml-3" %>
                   </td>
                 <% end %>
               </tr>
