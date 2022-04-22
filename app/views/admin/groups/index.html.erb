@@ -1,7 +1,7 @@
 <div class="container mt-sm-5 mb-sm-5 px-sm-0">
   <h1>グループ一覧</h1>
 
-    <div class="text-right mt-4">
+    <div class="text-right mt-4 mb-3">
       <%= search_form_for @q, url: search_admin_groups_path do |f| %>
         <%= f.search_field :name_cont %>
         <%= f.submit "検索" %>
@@ -22,7 +22,7 @@
         <% @groups.each do |group| %>
           <tr>
             <td>
-              <%= image_tag group.get_group_image(100,100) %>
+              <%= image_tag group.get_group_image(60,60) %>
             </td>
             <td>
               <%= link_to admin_group_path(group.id) do %>

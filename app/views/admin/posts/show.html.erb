@@ -22,7 +22,7 @@
       <div class="text-right mb-4">
         <% @post_tags.each do |tag| %>
           <%= link_to tag_search_tag_path(tag_id: tag.id) do %>
-            <%= tag.name %>
+            <i class="fas fa-tag"></i><%= tag.name %>
           <% end %>
         <% end %>
       </div>

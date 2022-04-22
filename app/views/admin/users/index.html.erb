@@ -1,7 +1,7 @@
 <div class="container mt-sm-5 mb-sm-5 px-sm-0">
   <h1>ユーザー一覧</h1>
-  
-    <div class="text-right mt-4">
+
+    <div class="text-right mt-4 mb-3">
       <%= search_form_for @q, url: search_admin_users_path do |f| %>
         <%= f.search_field :user_name_cont %>
         <%= f.submit "検索" %>
