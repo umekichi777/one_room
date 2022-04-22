@@ -7,6 +7,7 @@
           <div class="mt-4 text-center">
             <%= image_tag @user.get_profile_image(100, 100) %>
           </div>
+
           <div class="mt-5 text-center">
             <%= link_to "編集", edit_user_path(@user), class: "btn btn-success" %>
             <%= link_to "退会", unsubscribe_path(@user), class: "btn btn-danger ml-2" %>
@@ -15,6 +16,7 @@
           <div class="mt-4 text-center">
             <%= image_tag @user.get_profile_image(100, 100) %>
           </div>
+
           <div class="mt-5 text-center">
             <% if current_user.following?(@user) %>
               <%= link_to "フォロー外す", user_relationships_path(@user), method: :delete, class: "btn btn-primary" %>
@@ -29,16 +31,20 @@
         <% if @user.id == current_user.id %>
           <h5 class="font-italic">Account Name:</br></h5>
             <p><%= @user.user_name %></p>
+
           <h5 class="font-italic">Age:</br></h5>
             <p><%= @user.age_i18n %></p>
+
           <h5 class="font-italic">Introduction:</br></h5>
             <p><%= @user.introduction %></p>
+
           <h5 class="font-italic mt-2" style="display: inline-block;">
             follow:
             <%= link_to user_followings_path(@user) do %>
               <%= @user.followings.count %>
             <% end %>
           </h5>
+
           <h5 class="font-italic" style="display: inline-block; margin-left: 15px;">
             follower:
             <%= link_to user_followers_path(@user) do %>
@@ -48,16 +54,20 @@
         <% else %>
           <h5 class="font-italic">Account Name:</br></h5>
             <p><%= @user.user_name %></p>
+            
           <h5 class="font-italic">Age:</br></h5>
             <p><%= @user.age_i18n %></p>
+            
           <h5 class="font-italic">Introduction:</br></h5>
             <p><%= @user.introduction %></p>
+            
           <h5 class="font-italic mt-2" style="display: inline-block;">
             follow:
             <%= link_to user_followings_path(@user) do %>
               <%= @user.followings.count %>
             <% end %>
           </h5>
+          
           <h5 class="font-italic" style="display: inline-block; margin-left: 15px;">
             follower:
             <%= link_to user_followers_path(@user) do %>

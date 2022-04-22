@@ -1,7 +1,9 @@
-<div>
-  <div>
-    <div>
-      <h1>グループ検索結果</h1>
+<div class="container mt-sm-5 mb-sm-5 px-sm-0">
+  <div class="row">
+    <div class="col-11">
+      
+      <h1 class="mb-4">グループ検索結果</h1>
+
       <table class="table table-hover text-center">
         <thead>
           <tr>
@@ -16,7 +18,7 @@
           <% @results.each do |group| %>
             <tr>
               <td>
-                <%= image_tag group.get_group_image(100,100) %>
+                <%= image_tag group.get_group_image(60,60) %>
               </td>
               <td>
                 <%= link_to group_path(group.id) do %>
@@ -34,6 +36,7 @@
           <% end %>
         </tbody>
       </table>
+      
     </div>
   </div>
 </div>

@@ -1,9 +1,10 @@
   <h6 class="more" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">もっと見る....</h6>
+  
   <table class="table text-center col-9">
     <tbody>
       <% post.post_comments.first(2).each do |post_comment| %>
         <tr>
-          <td><%= image_tag post_comment.user.get_profile_image(70,70) %></td>
+          <td><%= image_tag post_comment.user.get_profile_image(50,50) %></td>
           <td><%= post_comment.user.user_name %></td>
           <td>
             <%= post_comment.comment %>
@@ -25,7 +26,7 @@
       <tbody>
         <% post.post_comments.offset(2).each do |post_comment| %>
           <tr>
-            <td><%= image_tag post_comment.user.get_profile_image(100,100) %></td>
+            <td><%= image_tag post_comment.user.get_profile_image(50,50) %></td>
             <td><%= post_comment.user.user_name %></td>
             <td>
               <%= post_comment.comment %></br>
