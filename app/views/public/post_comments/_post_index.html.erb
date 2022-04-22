@@ -1,27 +1,43 @@
   <h6 class="more" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">もっと見る....</h6>
-  <% post.post_comments.first(2).each do |post_comment| %>
-    <p><%= image_tag post_comment.user.get_profile_image(100,100) %></p>
-    <p><%= post_comment.user.user_name %></p>
-    <p>
-      <%= post_comment.created_at.strftime('%Y/%m/%d') %></br>
-      <%= post_comment.comment %>
-    </p>
-    <% if post_comment.user == current_user %>
-      <%= link_to "削除", post_post_comment_path(post, post_comment), method: :delete, remote: true %>
-    <% end %>
-  <% end %>
+  <table class="table text-center col-9">
+    <tbody>
+      <% post.post_comments.first(2).each do |post_comment| %>
+        <tr>
+          <td><%= image_tag post_comment.user.get_profile_image(70,70) %></td>
+          <td><%= post_comment.user.user_name %></td>
+          <td>
+            <%= post_comment.comment %>
+            <%= post_comment.created_at.strftime('%Y/%m/%d') %></br>
+          </td>
+          <td>
+            <% if post_comment.user == current_user %>
+              <%= link_to "削除", post_post_comment_path(post, post_comment), method: :delete, remote: true, class: "btn btn-danger" %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
   <!--3件目以降のコメント-->
   <div class="collapse" id="collapseExample">
-    <% post.post_comments.offset(2).each do |post_comment| %>
-      <p><%= image_tag post_comment.user.get_profile_image(100,100) %></p>
-      <p><%= post_comment.user.user_name %></p>
-      <p>
-        <%= post_comment.created_at.strftime('%Y/%m/%d') %></br>
-        <%= post_comment.comment %>
-      </p>
-      <% if post_comment.user == current_user %>
-        <%= link_to "削除", post_post_comment_path(post, post_comment), method: :delete, remote: true %>
-      <% end %>
-    <% end %>
+    <table class="table">
+      <tbody>
+        <% post.post_comments.offset(2).each do |post_comment| %>
+          <tr>
+            <td><%= image_tag post_comment.user.get_profile_image(100,100) %></td>
+            <td><%= post_comment.user.user_name %></td>
+            <td>
+              <%= post_comment.comment %></br>
+              <%= post_comment.created_at.strftime('%Y/%m/%d') %>
+            </td>
+            <td>
+              <% if post_comment.user == current_user %>
+                <%= link_to "削除", post_post_comment_path(post, post_comment), method: :delete, remote: true, class: "btn btn-danger" %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
