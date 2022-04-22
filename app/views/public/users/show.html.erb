@@ -30,13 +30,13 @@
       <div class="col-md-5 offset-1 mt-4">
         <% if @user.id == current_user.id %>
           <h5 class="font-italic">Account Name:</br></h5>
-            <p><%= @user.user_name %></p>
+          <p><%= @user.user_name %></p>
 
           <h5 class="font-italic">Age:</br></h5>
-            <p><%= @user.age_i18n %></p>
+          <p><%= @user.age_i18n %></p>
 
           <h5 class="font-italic">Introduction:</br></h5>
-            <p><%= @user.introduction %></p>
+          <p><%= @user.introduction %></p>
 
           <h5 class="font-italic mt-2" style="display: inline-block;">
             follow:
@@ -53,13 +53,13 @@
           </h5>
         <% else %>
           <h5 class="font-italic">Account Name:</br></h5>
-            <p><%= @user.user_name %></p>
+          <p><%= @user.user_name %></p>
             
           <h5 class="font-italic">Age:</br></h5>
-            <p><%= @user.age_i18n %></p>
+          <p><%= @user.age_i18n %></p>
             
           <h5 class="font-italic">Introduction:</br></h5>
-            <p><%= @user.introduction %></p>
+          <p><%= @user.introduction %></p>
             
           <h5 class="font-italic mt-2" style="display: inline-block;">
             follow:
