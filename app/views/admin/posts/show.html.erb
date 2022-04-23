@@ -1,54 +1,78 @@
-<h1>投稿詳細</h1>
+<div class="container mt-sm-5 mb-sm-5 px-sm-0">
+  <div class="row">
+    <div class="col-11">
+      <h1>投稿詳細</h1>
 
-<div>
+      <div class="text-center mb-4">
+        <h2><%= @post.title %></h2>
+      </div>
 
-  <h2><%= @post.title %></h2>
+      <div class="text-center mb-4">
+        <p><%= @post.body %></p>
+      </div>
 
-  <p><%= @post.body %></p>
-
-  <% if @post.images.attached? %>
-    <% @post.images.each do |image| %>
-      <%= image_tag image, size:'100x100' %>
-    <% end %>
-  <% end %>
-
-  <% @post_tags.each do |tag| %>
-    <%= link_to tag_search_tag_path(tag_id: tag.id) do %>
-      <%= tag.name %>
-    <% end %>
-  <% end %>
-
-  <div>
-    <!--いいね機能の実装-->
-    <div class="favorite-btn">
-      <%= @post.favorites.count %>
-    </div>
-
-    <!--コメント機能の実装-->
-    <p class="comments-count">コメント件数: <%= @post.post_comments.count %></p>
-    <div class="post-comments">
-      <%#= render "public/post_comments/post_index", post: @post %>
-      <h6 class="more" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">もっと見る....</h6>
-      <% @post.post_comments.first(2).each do |post_comment| %>
-        <p><%= image_tag post_comment.user.get_profile_image(100,100) %></p>
-        <p><%= post_comment.user.user_name %></p>
-        <p>
-          <%= post_comment.created_at.strftime('%Y/%m/%d') %></br>
-          <%= post_comment.comment %>
-        </p>
-      <% end %>
-
-      <!--3件目以降のコメント-->
-      <div class="collapse" id="collapseExample">
-        <% @post.post_comments.offset(2).each do |post_comment| %>
-          <p><%= image_tag post_comment.user.get_profile_image(100,100) %></p>
-          <p><%= post_comment.user.user_name %></p>
-          <p>
-            <%= post_comment.created_at.strftime('%Y/%m/%d') %></br>
-            <%= post_comment.comment %>
-          </p>
+      <div class="d-flex flex-wrap justify-content-center mb-4">
+        <% if @post.images.attached? %>
+          <% @post.images.each do |image| %>
+            <%= image_tag image, size:'100x100' %>
+          <% end %>
         <% end %>
       </div>
+
+      <div class="text-right mb-4">
+        <% @post_tags.each do |tag| %>
+          <%= link_to tag_search_tag_path(tag_id: tag.id) do %>
+            <i class="fas fa-tag"></i><%= tag.name %>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div>
+        <!--いいね機能の実装-->
+        <div class="favorite-btn">
+          <i class="fas fa-thumbs-up"></i><%= @post.favorites.count %>
+        </div>
+
+        <!--コメント機能の実装-->
+        <p class="comments-count">コメント件数: <%= @post.post_comments.count %></p>
+        <div class="post-comments">
+          <h6 class="more" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">もっと見る....</h6>
+
+          <table class="table text-center col-9">
+            <tbody>
+              <% @post.post_comments.first(2).each do |post_comment| %>
+                <tr>
+                  <td><%= image_tag post_comment.user.get_profile_image(100,100) %></td>
+                  <td><%= post_comment.user.user_name %></td>
+                  <td>
+                    <%= post_comment.comment %>
+                    <%= post_comment.created_at.strftime('%Y/%m/%d') %></br>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+
+          <!--3件目以降のコメント-->
+          <div class="collapse" id="collapseExample">
+            <table class="table text-center col-9">
+                <tbody>
+                  <% @post.post_comments.offset(2).each do |post_comment| %>
+                    <tr>
+                      <td><%= image_tag post_comment.user.get_profile_image(100,100) %></td>
+                      <td><%= post_comment.user.user_name %></td>
+                      <td>
+                        <%= post_comment.comment %>
+                        <%= post_comment.created_at.strftime('%Y/%m/%d') %>
+                      </td>
+                    </tr>
+                  <% end %>
+                </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>

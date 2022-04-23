@@ -1,24 +1,39 @@
-<div class="container">
-  <h5>タグが<%=@tag.name%>の投稿一覧</h5>
-
-  <!--タグリスト-->
-  <% @tag_list.each do |list|%>
-    <%=link_to admin_tag_search_tag_path(tag_id: list.id) do %>
-      <%= list.name %>
-    <% end %>
-    <%="(#{list.posts.count})" %>
-  <% end %>
-  <% @posts.each do |post| %>
-    <!--投稿はカードで囲む-->
-    <div class="card">
-      <div class="card-body">
-      <!--タイトル表示される文字数は２５文字までにしてます-->
-        <h6 class="card-title">
-          <%=link_to admin_post_path(post.id) do %>
-            <%= post.title.truncate(25) %>
+<div class="container mt-sm-5 mb-sm-5 px-sm-0">
+  <h5>タグが <i class="fas fa-tag"></i><%=@tag.name%>の投稿一覧</h5>
+  
+    <div class="row">
+      <div class="col-md-2">
+        <ul class="list-group">
+          <% @tag_list.each do |list|%>
+            <li class="list-group-flush">
+              <%=link_to admin_tag_search_tag_path(tag_id: list.id) do %>
+                <%= list.name %>
+              <% end %>
+              <%="(#{list.posts.count})" %>
+            </li>
           <% end %>
-        </h6>
+        </ul>
+      </div>
+
+      <div class="col-md-9 offset-1">
+        <div class="d-flex flex-wrap">
+          <% @posts.each do |post| %>
+            <!--投稿はカードで囲む-->
+            <div class="card">
+              <div class="card-body">
+                <!--タイトル表示される文字数は２５文字までにしてます-->
+                <h5 class="card-title">
+                  <%= post.title.truncate(25) %>
+                </h5>
+                <p class="card-text">
+                  <%= post.body.truncate(25) %>
+                </p>
+                <%=link_to "Take a closer look", admin_post_path(post.id), class: "btn btn-outline-primary" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
-  <% end %>
+
 </div>

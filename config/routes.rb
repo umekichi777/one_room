@@ -58,7 +58,11 @@ namespace :admin do
     end
   end
 
-  resources :users, only: [:index, :show]
+  resources :users, only: [:index, :show] do
+    collection do
+      get 'search' => "users#search"
+    end
+  end
 
   resources :groups, only: [:index, :show] do
     collection do

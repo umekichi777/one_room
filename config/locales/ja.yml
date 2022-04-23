@@ -7,3 +7,22 @@ ja:
         thirties: "30代"
         fourties: "40代"
         fifties: "50代"
+  activerecord:
+    attributes:
+      post:
+        title: "タイトル"
+        body: "内容"
+      group:
+        name: "グループ名"
+        introduction: "グループ紹介"
+  activeresource:   # Formオブジェクトを用いた場合
+    attributes:
+      post_object:
+        title: "タイトル"
+        body: "内容"
+      group_object:
+        name: "グループ名"
+        introduction: "グループ紹介"
+  errors:
+    messages:
+      blank: を入力してください

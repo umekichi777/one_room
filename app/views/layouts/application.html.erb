@@ -11,26 +11,20 @@
   </head>
 
   <body>
-    <header class="shadow-sm py-sm-3">
+    <header class="shadow-sm py-sm-3" style="background-color: #003366;">
       <%= render 'layouts/header' %>
     </header>
     <main>
       <% if flash[:notice] %>
-        <div class="alert alert-success" role="alert">
-          <p class="notice text-center" style="color:green;"><%= flash[:notice] %></p>
+        <div class="alert alert-primary" role="alert">
+          <p class="notice text-center alert-link"><%= flash[:notice] %></p>
         </div>
       <% end %>
 
       <%= yield %>
     </main>
-    <footer>
-      <div class="container-xxl mt-5">
-        <div class="row">
-          <div class="mx-auto">
-            <p>one-room.com</p>
-          </div>
-        </div>
-      </div>
+    <footer style="background-color: #003366;">
+      <%= render 'layouts/footer' %>
     </footer>
   </body>
 </html>

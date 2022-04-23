@@ -1,0 +1,39 @@
+<div class="container mt-sm-5 mb-sm-5 px-sm-0">
+  <div class="row">
+    <div class="col-11">
+
+      <h1 class="mb-4">ユーザー検索結果</h1>
+
+      <table class="table table-hover text-center">
+        <thead>
+          <tr>
+            <th></th>
+            <th>UserName</th>
+            <th>Follow</th>
+            <th>Follower</th>
+            <th>Status</th>
+            <th colspan="5"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @results.each do |user| %>
+            <tr>
+              <td>
+                <%= image_tag user.get_profile_image(50,50) %>
+              </td>
+              <td>
+                <%= link_to admin_user_path(user.id) do %>
+                  <%= user.user_name %>
+                <% end %>
+              </td>
+              <td><%= user.followings.count %></td>
+              <td><%= user.followers.count %></td>
+              <td><%= user.is_deleted? ? "退会" : "有効" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>

@@ -1,13 +1,29 @@
-<h2>1RooM</h2>
-<p>一人暮らしに役立つ情報を掲載するコミュニティサイト！</p>
+<div class="container">
+  <div class="row mt-sm-5 mb-sm-5">
+    <div class="col-10 mx-auto">
+      <div class="top-main my-sm-4">
+        <div class="justify-content-sm-center">
+          <h2>1RooM</h2>
+          <p>一人暮らしに役立つ情報を掲載するコミュニティサイト！</p>
+        </div>
 
-<div>
-  <%= link_to "新規登録", new_user_registration_path %>
+        <div>
+          <%= link_to "新規登録", new_user_registration_path, class: "btn btn-warning btn-lg btn-block mt-5" %>
+        </div>
+      </div>
+
+      <div>
+        <%= link_to "ログイン", new_user_session_path, class: "btn btn-primary btn-lg btn-block" %>
+      </div>
+      <div>
+        <%= link_to "ゲストとしてログイン", users_guest_sign_in_path, method: :post, class: "btn btn-secondary btn-lg btn-block mt-3" %>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div>
-  <%= link_to "ログイン", new_user_session_path %>
-</div>
-<div>
-  <%= link_to "ゲストとしてログイン", users_guest_sign_in_path, method: :post %>
-</div>
+<style>
+  .top-main {
+    height: 350px;
+  }
+</style>

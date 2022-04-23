@@ -1,51 +1,47 @@
-<div class="container px-sm-0">
-  <div class="row">
-    <div class="col-md-11 mx-auto">
-      <h1>グループ一覧</h1>
+<div class="container mt-sm-5 mb-sm-5 px-sm-0">
+  <h1>グループ一覧</h1>
 
-      <div>
-        <%= search_form_for @q, url: search_groups_path do |f| %>
-          <%= f.search_field :name_cont %>
-          <%= f.submit "検索" %>
-        <% end %>
-      </div>
-
-      <div class="text-right mb-3 mr-sm-5">
-        <%= link_to 'new!', new_group_path %>
-      </div>
-
-      <table class="table table-hover text-center">
-        <thead>
-          <tr>
-            <th></th>
-            <th>Group</th>
-            <th>Introduction</th>
-            <th>Members</th>
-            <th colspan="4"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @groups.each do |group| %>
-            <tr>
-              <td>
-                <%= image_tag group.get_group_image(100,100) %>
-              </td>
-              <td>
-                <%= link_to group_path(group.id) do %>
-                  <%= group.name %>
-                <% end %>
-              </td>
-              <td>
-                <%= group.introduction.truncate(25) %>
-              </td>
-              <td>
-                <i class="fas fa-users"></i>
-                <%= group.users.count %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+    <div class="text-right mt-4">
+      <%= search_form_for @q, url: search_groups_path do |f| %>
+        <%= f.search_field :name_cont %>
+        <%= f.submit "検索" %>
+      <% end %>
     </div>
-  </div>
+
+    <div class="text-right mt-3 mb-3">
+      <%= link_to 'new!', new_group_path, class: "btn btn-outline-info" %>
+    </div>
+
+    <table class="table table-hover text-center">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Group</th>
+          <th>Introduction</th>
+          <th>Members</th>
+          <th colspan="4"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @groups.each do |group| %>
+          <tr>
+            <td class="group-img">
+              <%= image_tag group.get_group_image(60,60) %>
+            </td>
+            <td>
+              <%= link_to group_path(group.id) do %>
+                <%= group.name %>
+              <% end %>
+            </td>
+            <td>
+              <%= group.introduction.truncate(25) %>
+            </td>
+            <td>
+              <i class="fas fa-users"></i>
+              <%= group.users.count %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 </div>

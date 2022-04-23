@@ -1,59 +1,56 @@
-<div class="container px-sm-0">
-  <div class="row">
-    <div class="col-md-11 mx-auto">
-      <h1>投稿一覧</h1>
+<div class="container mt-sm-5 mb-sm-5 px-sm-0">
+  <h1>投稿一覧</h1>
 
-      <div>
-        <%= search_form_for @q, url: search_admin_posts_path do |f| %>
-          <%= f.search_field :title_cont %>
-          <%= f.submit "検索" %>
-        <% end %>
+    <div class="text-right mt-4 mb-3">
+      <%= search_form_for @q, url: search_admin_posts_path do |f| %>
+        <%= f.search_field :title_cont %>
+        <%= f.submit "検索" %>
+      <% end %>
+    </div>
+
+    <div class="row">
+      <div class="col-md-2">
+        <ul class="list-group">
+          <% @tag_list.each do |list| %>
+            <li class="list-group-flush">
+              <%= link_to admin_tag_search_tag_path(tag_id: list.id) do %>
+                <%= list.name %>
+              <% end %>
+              <%="(#{list.posts.count})" %>
+            </li>
+          <% end %>
+        </ul>
       </div>
 
-      <div>
-        <table>
-          <tbody>
-          <% @tag_list.each do |list| %>
+      <div class="col-md-9 offset-1">
+        <table class="table table-hover text-center">
+          <thead>
             <tr>
-              <td>
-                <%= link_to admin_tag_search_tag_path(tag_id: list.id) do %>
-                  <%= list.name %>
-                <% end %>
-                <%="(#{list.posts.count})" %>
-              </td>
+              <th>UserName</th>
+              <th>Title</th>
+              <th></th>
+              <th colspan="3"></th>
             </tr>
-          <% end %>
+          </thead>
+          <tbody>
+            <% @posts.each do |post| %>
+              <tr id="post_<%= post.id %>">
+                <td>
+                  <%= link_to user_path(post.user.id) do %>
+                    <%= post.user.user_name %>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to admin_post_path(post.id) do %>
+                    <%= post.title %>
+                  <% end %>
+                </td>
+                <td><%= post.favorites.count %></td>
+              </tr>
+            <% end %>
           </tbody>
         </table>
       </div>
-
-      <table class="table table-hover text-center">
-        <thead>
-          <tr>
-            <th>UserName</th>
-            <th>Title</th>
-            <th></th>
-            <th colspan="3"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @posts.each do |post| %>
-            <tr id="post_<%= post.id %>">
-              <td>
-                <%= link_to user_path(post.user.id) do %>
-                  <%= post.user.user_name %>
-                <% end %>
-              </td>
-              <td>
-                <%= link_to admin_post_path(post.id) do %>
-                  <%= post.title %>
-                <% end %>
-              </td>
-              <td><%= post.favorites.count %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
     </div>
-  </div>
+
 </div>

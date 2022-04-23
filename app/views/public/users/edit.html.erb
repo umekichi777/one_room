@@ -1,45 +1,68 @@
-<h1>アカウント編集</h1>
+<div class="container">
+  <div class="row mt-sm-5 mb-sm-5">
+    <div class="col-md-8">
+      <h1>アカウント編集</h1>
 
-<%= render 'layouts/error_message', resource: @user %>
+      <%= render 'layouts/error_message', resource: @user %>
 
-<%= form_with model: @user, url: user_path(@user), method: :patch, local: true do |f| %>
-  <%= f.label :name, "名前" %>
-  <%= f.text_field :name %>
+      <%= form_with model: @user, url: user_path(@user), method: :patch, local: true do |f| %>
+        <div class="form-group">
+          <%= f.label :name, "名前" %>
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
 
-  <%= f.label :kana_name, "フリガナ" %>
-  <%= f.text_field :kana_name %>
+        <div class="form-group">
+          <%= f.label :kana_name, "フリガナ" %>
+          <%= f.text_field :kana_name, class: "form-control" %>
+        </div>
 
-  <%= f.label :user_name, "アカウント名" %>
-  <%= f.text_field :user_name %>
+        <div class="form-group">
+          <%= f.label :user_name, "アカウント名" %>
+          <%= f.text_field :user_name, class: "form-control" %>
+        </div>
 
-  <%= f.label :email, "メールアドレス" %>
-  <%= f.email_field :email %>
+        <div class="form-group">
+          <%= f.label :email, "メールアドレス" %>
+          <%= f.email_field :email, class: "form-control" %>
+        </div>
 
-  <%= f.label :introduction, "紹介" %>
-  <%= f.text_area :introduction %>
+        <div class="form-group">
+          <%= f.label :introduction, "紹介" %>
+          <%= f.text_area :introduction, class: "form-control input-lg" %>
+        </div>
 
-  <!--10代のラジオボタン-->
-  <%= f.label :age, User.ages_i18n[:teens] %>
-  <%= f.radio_button :age, User.ages.key(0) %>
+        <div class="form-group">
+          <!--10代のラジオボタン-->
+          <%= f.label :age, User.ages_i18n[:teens] %>
+          <%= f.radio_button :age, User.ages.key(0) %>
 
-  <!--20代のラジオボタン-->
-  <%= f.label :age, User.ages_i18n[:twenties] %>
-  <%= f.radio_button :age, User.ages.key(1) %>
+          <!--20代のラジオボタン-->
+          <%= f.label :age, User.ages_i18n[:twenties] %>
+          <%= f.radio_button :age, User.ages.key(1) %>
 
-  <!--30代のラジオボタン-->
-  <%= f.label :age, User.ages_i18n[:thirties] %>
-  <%= f.radio_button :age, User.ages.key(2) %>
+          <!--30代のラジオボタン-->
+          <%= f.label :age, User.ages_i18n[:thirties] %>
+          <%= f.radio_button :age, User.ages.key(2) %>
 
-  <!--40代のラジオボタン-->
-  <%= f.label :age, User.ages_i18n[:fourties] %>
-  <%= f.radio_button :age, User.ages.key(3) %>
+          <!--40代のラジオボタン-->
+          <%= f.label :age, User.ages_i18n[:fourties] %>
+          <%= f.radio_button :age, User.ages.key(3) %>
 
-  <!--50代のラジオボタン-->
-  <%= f.label :age, User.ages_i18n[:fifties] %>
-  <%= f.radio_button :age, User.ages.key(4) %>
+          <!--50代のラジオボタン-->
+          <%= f.label :age, User.ages_i18n[:fifties] %>
+          <%= f.radio_button :age, User.ages.key(4) %>
+        </div>
 
-  <%= f.label :profile_image, "プロフィール画像" %>
-  <%= f.file_field :profile_image, accept: "image/*" %>
+        <div class="form-group">
+          <%= f.label :profile_image, "プロフィール画像" %>
+          <%= f.file_field :profile_image, accept: "image/*" %>
+        </div>
 
-  <%= f.submit "変更を保存する" %>
-<% end %>
+        <div class="form-group">
+          <%= f.submit "変更を保存する", class: "btn btn-success" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+

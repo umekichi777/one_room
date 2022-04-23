@@ -1,32 +1,32 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
-      <h2>Sign up</h2>
+      <h2 class="sign-t">Sign up</h2>
       <%= render "public/shared/error_messages", resource: resource %>
 
       <%= form_with model: @user, url: user_registration_path do |f| %>
 
-        <div class="field">
+        <div class="field form-item">
           <%= f.label :name, "名前（フルネーム）" %><br />
           <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
         </div>
 
-        <div class="field">
+        <div class="field form-item">
           <%= f.label :kana_name, "フリガナ（フルネーム）" %><br />
           <%= f.text_field :kana_name, autofocus: true, autocomplete: "kana_name" %>
         </div>
 
-        <div class="field">
+        <div class="field form-item">
           <%= f.label :user_name, "ユーザー名" %><br />
           <%= f.text_field :user_name, autofocus: true, autocomplete: "user_name" %>
         </div>
 
-        <div class="field">
+        <div class="field form-item">
           <%= f.label :email, "メールアドレス" %><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
         </div>
 
-        <div class="field">
+        <div class="field form-item">
           <%= f.label :password, "パスワード" %>
           <% if @minimum_password_length %>
             <em>(<%= @minimum_password_length %> characters minimum)</em>
@@ -34,12 +34,12 @@
           <%= f.password_field :password, autocomplete: "new-password" %>
         </div>
 
-        <div class="field">
+        <div class="field form-item">
           <%= f.label :password_confirmation, "パスワード（確認用）" %><br />
           <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
         </div>
 
-        <div class="actions">
+        <div class="actions button-panel">
           <%= f.submit "Sign up" %>
         </div>
       <% end %>
@@ -48,3 +48,77 @@
     </div>
   </div>
 </div>
+
+
+
+<style>
+.sign-t {
+  text-align: center;
+  padding: 1em 0;
+  color: #5e5e5e;
+  font-family: "Lucida Console", Courier, monospace;
+}
+
+p {
+  color: #5e5e5e;
+}
+
+.title_border {
+  border-bottom: solid 3px #d6e9ca;
+  position: relative;
+}
+
+.title_border:after {
+  position: absolute;
+  content: " ";
+  display: block;
+  border-bottom: solid 3px  #336666;
+  bottom: -3px;
+  width: 20%;
+}
+
+  .form-item {
+  margin-bottom: 0.75em;
+  width: 100%;
+  color: #5e5e5e;
+}
+
+.form-item input {
+  background: #fafafa;
+  border: none;
+  border-bottom: 2px solid #e9e9e9;
+  color: #666;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1em;
+  height: 50px;
+  transition: border-color 0.3s;
+  width: 100%;
+}
+
+.form-item input:focus {
+  border-bottom: 2px solid #c0c0c0;
+  outline: none;
+}
+
+.button-panel {
+  margin: 2em 0 0;
+  width: 100%;
+  color: #5e5e5e;
+}
+
+
+.button-panel .button {
+  background:  #336666;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  height: 50px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.2em;
+  letter-spacing: 0.05em;
+  text-align: center;
+  text-transform: uppercase;
+  transition: background 0.3s ease-in-out;
+  width: 100%;
+}
+</style>
