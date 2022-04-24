@@ -30,7 +30,7 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post_comment = PostComment.new
     # コメントを最新順に表示
-    @post_comments = @post.post_comments.order(created_at: :desc)
+    # @post_comments = @post.post_comments.order(created_at: :desc)
     @post_tags = @post.tags
   end
 
@@ -89,12 +89,12 @@ class Public::PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title, :body, :user_id, images: [ ])
   end
-  
+
   def ensure_correct_user
     @post = Post.find(params[:id])
     unless @post.user == current_user
       redirect_to posts_path
     end
   end
-  
+
 end
