@@ -2,7 +2,7 @@ class Admin::UsersController < ApplicationController
   before_action :set_q, only: [:index, :search]
 
   def index
-    @users = User.all
+    @users = User.page(params[:page])
   end
 
   def show
@@ -10,7 +10,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def search
-    @results = @q.result
+    @results = @q.result.page(params[:page])
   end
 
 
