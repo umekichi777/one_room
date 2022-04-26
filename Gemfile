@@ -59,6 +59,7 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'enum_help'
 gem 'ransack'
+gem 'kaminari','~> 1.2.1'
 
 gem 'dotenv-rails'
 group :production do

@@ -18,7 +18,7 @@ class Public::GroupsController < ApplicationController
   end
 
   def index
-    @groups = Group.all
+    @groups = Group.page(params[:page])
   end
 
   def show
@@ -65,7 +65,7 @@ class Public::GroupsController < ApplicationController
   end
 
   def search
-    @results = @q.result
+    @results = @q.result.page(params[:page])
   end
 
 
