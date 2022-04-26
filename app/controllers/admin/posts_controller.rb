@@ -2,7 +2,7 @@ class Admin::PostsController < ApplicationController
   before_action :set_q, only: [:index, :search]
 
   def index
-    @posts = Post.all
+    @posts = Post.page(params[:page])
     @tag_list = Tag.all
   end
 
@@ -14,7 +14,7 @@ class Admin::PostsController < ApplicationController
   end
 
   def search
-    @results = @q.result
+    @results = @q.result.page(params[:page])
   end
 
   def search_tag
