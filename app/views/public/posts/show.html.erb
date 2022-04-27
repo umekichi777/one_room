@@ -26,7 +26,7 @@
         <div class="d-flex flex-wrap justify-content-center mb-4">
           <% if @post.images.attached? %>
             <% @post.images.each do |image| %>
-              <%= image_tag image, size:'200x200', class: "mx-2" %>
+              <%= image_tag image, size: '270x210', class: "mx-2" %>
             <% end %>
           <% end %>
         </div>
@@ -54,7 +54,7 @@
             <%= render "public/post_comments/form", post: @post, post_comment: @post_comment %>
           </div>
         </div>
-        
+
       </div>
     </div>
   </div>

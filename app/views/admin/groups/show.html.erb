@@ -1,17 +1,17 @@
 <div class="container mt-sm-5 mb-sm-5 px-sm-0">
   <div class="row">
     <div class="col-11">
-      
+
       <h1>グループ詳細</h1>
 
         <div class="text-center mb-4">
-          <%= image_tag @group.get_group_image(100,100) %>
+          <%= image_tag @group.get_group_image(250,280) %>
         </div>
 
         <h2 class="text-center mb-4">
           <%= @group.name %>
         </h2>
-        
+
         <div class="text-right mb-4">
           <h6>owner: <%= @group.user ? @group.user.user_name : 'unknown' %></h6>
           <i class="far fa-clock"></i><%= @group.created_at.strftime('%Y/%m/%d') %> 作成
@@ -21,12 +21,14 @@
           <h4 class="mb-2">グループ概要</h4>
           <p><%= @group.introduction %></p>
         </div>
-        
+
         <div class="mb-4">
           <h4>Members <i class="fas fa-users"></i></h4>
-          <% @group.users.each do |member| %>
-            <%= member.user_name %>
-          <% end %>
+          <ul>
+            <% @group.users.each do |member| %>
+              <li><%= member.user_name %></li>
+            <% end %>
+          </ul>
         </div>
 
     </div>

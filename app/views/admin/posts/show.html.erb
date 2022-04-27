@@ -14,7 +14,7 @@
       <div class="d-flex flex-wrap justify-content-center mb-4">
         <% if @post.images.attached? %>
           <% @post.images.each do |image| %>
-            <%= image_tag image, size:'100x100' %>
+            <%= image_tag image, size: '270x210', class: "mx-2" %>
           <% end %>
         <% end %>
       </div>
