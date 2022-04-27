@@ -1,6 +1,5 @@
 <% if users.exists? %>
-  <% users.each do |user| %>
-    <table class="table">
+    <table class="table table-hover text-center">
       <thead>
         <tr>
           <th></th>
@@ -11,15 +10,18 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td><%= image_tag user.get_profile_image(100,100) %></td>
-          <td><%= user.user_name %></td>
-          <td>フォロー数: <%= user.followings.count %></td>
-          <td>フォロワー数: <%= user.followers.count %></td>
-        </tr>
+        <% users.each do |user| %>
+          <tr>
+            <td><%= image_tag user.get_profile_image(50,50) %></td>
+            <td><%= user.user_name %></td>
+            <td>フォロー数: <%= user.followings.count %></td>
+            <td>フォロワー数: <%= user.followers.count %></td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
-  <% end %>
 <% else %>
-  <p>No users</p>
+  <div class="text-center">
+    <p>No users</p>
+  </div>
 <% end %>

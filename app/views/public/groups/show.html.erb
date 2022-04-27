@@ -16,7 +16,7 @@
         </div>
 
         <div class="text-center mb-4">
-          <%= image_tag @group.get_group_image(100,100) %>
+          <%= image_tag @group.get_group_image(250,280) %>
         </div>
 
         <h2 class="text-center mb-4">
@@ -35,9 +35,11 @@
 
         <div class="mb-4">
           <h4>Members <i class="fas fa-users"></i></h4>
-          <% @group.users.each do |member| %>
-            <%= member.user_name %>
-          <% end %>
+          <ul>
+            <% @group.users.each do |member| %>
+              <li><%= member.user_name %></li>
+            <% end %>
+          </ul>
         </div>
 
     </div>
