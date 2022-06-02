@@ -14,7 +14,7 @@ scope module: :public do
   root to: "homes#top"
   get 'about' => "homes#about", as: 'about'
 
-  resources :users, only: [:index, :show, :edit, :update] do
+  resources :users, only: [:show, :edit, :update] do
     resource :relationships, only: [:create, :destroy]
     get 'followings' => "relationships#followings", as: 'followings'
     get 'followers' => "relationships#followers", as: 'followers'
