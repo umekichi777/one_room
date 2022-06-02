@@ -14,8 +14,8 @@
 ### 主な利用シーン
 一人暮らしの生活全般に関する自分が知りたい情報を検索したり、自分が持っている情報を投稿できる。
 
-## 設計書
-<...>
+## 設計書(ER図)
+![er図_one_room](https://user-images.githubusercontent.com/98945172/171651059-eec8265d-edd4-4233-ad6f-e8f271d474e2.png)
 
 ## 開発環境
 - OS：Linux(CentOS)
